@@ -1,2 +1,4 @@
 # rr
-#### git config credential.helper store
+#### a simple bookmark in command line for lazy guy
+
+

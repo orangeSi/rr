@@ -1,0 +1,65 @@
+#!/ifswh1/BC_PS/sikaiwei/software/Ruby/ruby-2.3.1/bin/ruby -W0
+
+
+
+def show(file,tag)
+	all=""
+	index=0
+	File.open(file,"a+") do |file|
+		file.each do |line|
+			arr= line.split(/\t/)
+			#all+=arr[0]+"\t"+arr[1]
+			if arr[0]=~ /#{tag}/i
+				index+=1
+				all+=index.to_s+"."+arr[0]+"\t"+arr[1..-1].to_s+"\n"
+
+			end
+		end
+	end
+	if index.eql?(0)
+		all="no search result\n"
+	end
+	return all
+end
+
+
+def add(file,tag,path)
+	all=""
+	myfile=File.open(file,"a")
+	myfile.puts(tag+"\t"+path.to_s+"\t"+Time.new.to_s+"\n")
+	return "add done\n"
+end
+
+
+
+user=`whoami`.chomp
+file="/home/"+user+"/.rubydb"
+usage="
+    Usage1:add <bookmarks> <bookmarks content>\tadd bookmarks
+    Usage2:<bookmarks>\t\t\t\tshow bookmarks content
+    Usage3:rm <bookmarks.index> cannot be used not yet
+
+    Author:sikaiwei@genomics.cn
+"
+
+if ARGV.length.eql?(0) || ARGV.length.eql?(2)
+	puts usage
+	exit
+elsif ARGV.length.eql?(1)
+	puts show(file,ARGV[0])
+elsif ARGV.length >=3
+	if ARGV[0]=~ /^add$/i
+		puts add(file,ARGV[1],ARGV[2..-1].to_s)
+	elsif ARGV[0]=~ /^list$/i
+		puts list(file)
+	else
+		puts usage
+		exit
+	end
+
+end
+
+#puts show("note.txt","OR")
+#puts add("note2.txt","new","somepath")
+
+

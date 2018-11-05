@@ -9,6 +9,7 @@ rr google  .. # search bookmark
 
 ```
 <br><br>
-![gene cluster image](termtosvg_7swlyfvl.svg)
-
+<p align="center">
+    <img src="termtosvg_7swlyfvl.svg">
+</p>
 

@@ -9,7 +9,11 @@ rr google  .. # search bookmark
 
 ```
 <br><br>
-#### <img src="https://raw.github.com/orangeSi/rr/master/termtosvg_7swlyfvl.svg">
+
 <img src="termtosvg_7swlyfvl.svg">
-#### <img src="https://github.com/orangeSi/rr/blob/master/termtosvg_7swlyfvl.svg">
+
+```
+<img src="https://raw.github.com/orangeSi/rr/master/termtosvg_7swlyfvl.svg">
+<img src="https://github.com/orangeSi/rr/blob/master/termtosvg_7swlyfvl.svg">
+```
 

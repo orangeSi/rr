@@ -10,6 +10,6 @@ rr google  .. # search bookmark
 ```
 <br><br>
 <p align="center">
-    <img src="termtosvg_7swlyfvl.svg">
+    <img src="https://raw.github.com/orangeSi/rr/master/termtosvg_7swlyfvl.svg">
 </p>
 

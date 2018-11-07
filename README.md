@@ -3,9 +3,9 @@
 ```
 chmod 755 rr && export PATH=$PWD:$PATH
 
-rr add google www.google.com .. # add bookmark
+rr add google www.google.com something # add bookmark
 
-rr google  .. # search bookmark
+rr goog    # search bookmark
 
 ```
 <br><br>

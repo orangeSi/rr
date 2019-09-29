@@ -7,8 +7,7 @@ def show(file,tag)
 		#all+=arr[0]+"\t"+arr[1]
 		if arr[0]=~ /#{tag}/i
 			index+=1
-			#all+=index.to_s+"."+arr[0]+"\t"+arr[1..-1].to_s+"\n"
-			all+=index.to_s+"."+arr[0]+"\t "+arr[1..-1].join("\t")+"\n"
+			all+=index.to_s+"\t"+arr[0]+"\t "+arr[1..-1].join("\t")+"\n"
 		end
 	end
 	if index == 0
@@ -24,8 +23,10 @@ def list(file)
 end
 
 def add(file, tag, path)
+	content = ""
+	path.each {|e| content += "#{e} "}
 	myfile=File.open(file, "a")
-	myfile.puts(tag+"\t[ "+path.to_s+" ]\t"+Time.new.to_s+"\n")
+	myfile.puts(tag+"\t[ "+content+" ]\t"+Time.new.to_s+"\n")
 	myfile.close
 	return "add done\n"
 end
@@ -49,7 +50,7 @@ elsif ARGV.size == 1
 	puts show(file, ARGV[0])
 elsif ARGV.size >=3
 	if ARGV[0]=~ /^add$/i
-		puts add(file, ARGV[1], ARGV[2..-1].to_s)
+		puts add(file, ARGV[1], ARGV[2..-1])
 	elsif ARGV[0]=~ /^list$/i
 		puts list(file)
 	else

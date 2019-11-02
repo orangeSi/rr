@@ -31,10 +31,14 @@ def add(file, tag, path)
 	return "add done\n"
 end
 
+def check_db_exists(file)
+	unless File.exists?(file)
+		File.write(file, "")
+	end
+end
 
-
-user=`whoami`.chomp
-file="/home/"+user+"/.rubydb"
+user=`readlink -f ~`.chomp
+file=user+"/.rubydb"
 usage="
     Usage1:add <bookmarks> <bookmarks content>\tadd bookmarks
     Usage2:<bookmarks>\t\t\t\tshow bookmarks content
@@ -47,8 +51,10 @@ if ARGV.size == 0 || ARGV.size == 2
 	puts usage
 	exit
 elsif ARGV.size == 1
+	check_db_exists(file)
 	puts show(file, ARGV[0])
 elsif ARGV.size >=3
+	check_db_exists(file)
 	if ARGV[0]=~ /^add$/i
 		puts add(file, ARGV[1], ARGV[2..-1])
 	elsif ARGV[0]=~ /^list$/i
